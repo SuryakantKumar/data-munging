@@ -1,19 +1,18 @@
 from data_extract import Extractor
-"""Import Extractor class from data_extract file"""
 
 
-class Analysis(Extractor):
+class Analysis:
     """Class for analysis of data"""
 
     def __init__(self, file, id_column, first_value_column, second_value_column):
-        """Initializing the analysis class with file and related columns
+        """Initializing the analysis class with related columns
 
-        param file: File related to analysis
         param id_column: column having id or name
         param first_value_column: column having first value for difference
         param second_value_column: column having second value for difference
         """
-        self.file = super().extract_data(file)
+        self.extractor = Extractor()
+        self.file = self.extractor.extract_data(file)
         self.id_column = id_column
         self.first_value_column = first_value_column
         self.second_value_column = second_value_column
