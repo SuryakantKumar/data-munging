@@ -1,7 +1,9 @@
 from analysis import Analysis
+"""Import Analysis class from analysis file"""
 
 
 class WeatherAnalysis(Analysis):
+    """Class for analysis of weather data"""
 
     def __init__(self, file, id_column=0, first_value_column=1, second_value_column=2):
         super().__init__(file, id_column, first_value_column, second_value_column)

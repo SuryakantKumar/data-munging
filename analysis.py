@@ -1,12 +1,27 @@
-class Analysis:
+from data_extract import Extractor
+"""Import Extractor class from data_extract file"""
+
+
+class Analysis(Extractor):
+    """Class for analysis of data"""
 
     def __init__(self, file, id_column, first_value_column, second_value_column):
-        self.file = [line.strip().split() for line in open(file).readlines()]
+        """Initializing the analysis class with file and related columns
+
+        param file: File related to analysis
+        param id_column: column having id or name
+        param first_value_column: column having first value for difference
+        param second_value_column: column having second value for difference
+        """
+        self.file = super().extract_data(file)
         self.id_column = id_column
         self.first_value_column = first_value_column
         self.second_value_column = second_value_column
 
     def data_clean(self):
+        """Removing first row because it's a header and rows having zero or one values,
+        because we require atleast three rows for finding difference """
+
         self.cleaned_data = []
 
         row_counter = 0
@@ -20,6 +35,8 @@ class Analysis:
         return self.cleaned_data
 
     def computation(self):
+        """Computing the id value with minimum difference"""
+
         self.minimum_id_value = ''
         self.minimum_difference = 9999999999
         for each_row in self.cleaned_data:

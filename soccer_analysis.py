@@ -1,7 +1,9 @@
 from analysis import Analysis
+"""Import Analysis class from analysis file"""
 
 
 class SoccerAnalysis(Analysis):
+    """Class for Soccer data analysis"""
 
     def __init__(self, file, id_column=1, first_value_column=6, second_value_column=8):
         super().__init__(file, id_column, first_value_column, second_value_column)
